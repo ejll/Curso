@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -13,6 +14,14 @@ namespace Quiron.LojaVirtual.Web
         {
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: null,
+                url: "Pagina{pagina}",
+                defaults: new { controller = "Vitrine", action = "ListaProdutos", id = UrlParameter.Optional }
+
+                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
